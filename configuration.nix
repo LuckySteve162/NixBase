@@ -8,7 +8,7 @@
   ];
 
   # System identity
-  networking.hostName = "hyprland-box";
+  networking.hostName = "nixos";
   time.timeZone = "America/Chicago";
 
   # Bootloader
@@ -30,12 +30,12 @@
   users.users.luckysteve = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [  ];
   };
 
   # Wayland environment
   programs.hyprland.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.gdm.enable = true;
   services.displayManager.defaultSession = "hyprland";
 
   environment.sessionVariables = {
@@ -63,6 +63,9 @@
 
     # Audio
     pulsemixer pipewire wireplumber
+
+    # Text Editor
+    neovim
 
     # Power & lock
     batsignal waylock cage swayidle
