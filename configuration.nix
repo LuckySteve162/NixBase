@@ -35,8 +35,10 @@
 
   # Wayland environment
   programs.hyprland.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.displayManager.defaultSession = "hyprland";
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm.wayland.enable = true;
+  services.xserver.displayManager.sddm.theme = "where_is_my_sddm_theme";
 
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
