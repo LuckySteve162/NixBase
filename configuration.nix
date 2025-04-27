@@ -28,13 +28,11 @@
     packages = with pkgs; [ ];
   };
 
-  # Enable autologin to TTY1
-  services.getty.autoLogin.enable = true;
-  services.getty.autoLogin.user = "luckysteve";
-
   # Wayland environment
   programs.hyprland.enable = true;
-
+  services.displayManager.sddm.enable = true;
+  services.displayManager.defaultSession = "hyprland";
+  
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
     XDG_CURRENT_DESKTOP = "Hyprland";
@@ -45,29 +43,7 @@
   };
 
   # Core system services
-  services.systemd.network.enable = true;
   services.dbus.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.wlr.enable = true;
-
-  # Sound with PipeWire
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    jack.enable = false;
-  };
-
-  # Fonts
-  fonts.fontconfig.enable = true;
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-emoji
-    font-awesome
-    jetbrains-mono
-  ];
 
   # System-wide packages
   environment.systemPackages = with pkgs; [
