@@ -13,6 +13,9 @@
 
   # Bootloader
   boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.devices = "nodev";
+
 
   # OpenSSH daemon
   services.openssh.enable = true;
