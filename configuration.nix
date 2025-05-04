@@ -1,4 +1,4 @@
-# hosts/hyprland-box/configuration.nix
+# Confix for base Nix
 
 { config, pkgs, ... }:
 
@@ -11,11 +11,26 @@
   networking.hostName = "nixos";
   time.timeZone = "America/Chicago";
 
+  # Networking
+  networking = {
+  interfaces.ens3 = {
+    ipv4.addresses = [{
+      address = "172.16.122.14";
+      prefixLength = 24;
+    }];
+  };
+  defaultGateway = {
+    address = "172.16.122.1";
+    interface = "ens3";
+  };
+  } 
+
   # Bootloader
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
 
 
   # OpenSSH daemon
