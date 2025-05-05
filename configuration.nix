@@ -1,3 +1,5 @@
+# Confix for base Nix
+
 { config, pkgs, ... }:
 
 {
@@ -11,7 +13,7 @@
 
   # Networking
   networking = {
-  interfaces.ens3 = {
+  interfaces.enp5s0 = {
     ipv4.addresses = [{
       address = "172.16.122.14";
       prefixLength = 24;
@@ -19,9 +21,13 @@
   };
   defaultGateway = {
     address = "172.16.122.1";
-    interface = "enp5s0:";
+    interface = "enp5s0";
+  };
+  firewall = {
+    allowedTCPPorts = [ 3389 ];
   };
   };
+
 
   # Bootloader
   boot.loader.grub.enable = true;
@@ -60,6 +66,10 @@
   # Core system services
   services.dbus.enable = true;
 
+  # Remote desktop services
+  services.xrdp.enable = true;
+  services.xrdp.defaultWindowManager = "hyprland";
+
   # System-wide packages
   environment.systemPackages = with pkgs; [
     # Core environment
@@ -84,7 +94,7 @@
     iproute2
 
     # Utilities
-    grim slurp btop git sway
+    grim slurp btop git sway waypipe
   ];
 
   system.stateVersion = "24.11";
