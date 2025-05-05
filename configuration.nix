@@ -110,7 +110,7 @@
     waypipe sunshine
 
     # Utilities
-    grim slurp btop git sway 
+    grim slurp btop git stow ffmpeg
   ];
 
   system.stateVersion = "24.11";
