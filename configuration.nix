@@ -1,5 +1,3 @@
-# Confix for base Nix
-
 { config, pkgs, ... }:
 
 {
@@ -21,21 +19,19 @@
   };
   defaultGateway = {
     address = "172.16.122.1";
-    interface = "ens3";
+    interface = "enp5s0:";
   };
-  } 
+  };
 
   # Bootloader
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.useOSProber = true;
 
 
   # OpenSSH daemon
   services.openssh.enable = true;
-  
+
   # Locale
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
