@@ -76,8 +76,12 @@
   services.dbus.enable = true;
 
   # Remote desktop services
-  services.sunshine.enable = true;
-
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+  };
+  
   # System-wide packages
   environment.systemPackages = with pkgs; [
     # Core environment
