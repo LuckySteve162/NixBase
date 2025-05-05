@@ -51,7 +51,10 @@
   # User with sudo access
   users.users.luckysteve = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ 
+    "wheel" # For sudo
+    "video" "render" "input" "audio" # For sunshine RDP
+    ]; 
     packages = with pkgs; [  ];
   };
 
