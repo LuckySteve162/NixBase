@@ -80,8 +80,9 @@
     enable = true;
     autoStart = true;
     capSysAdmin = true;
+    openFirewall = true;
   };
-  
+
   # System-wide packages
   environment.systemPackages = with pkgs; [
     # Core environment
