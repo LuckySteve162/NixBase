@@ -74,7 +74,6 @@
 
   # Remote desktop services
   services.sunshine.enable = true;
-  security.pam.services.hyprland.enableGnomeKeyring = true;
   systemd.user.services.sunshine.enable = true;
 
   # System-wide packages
