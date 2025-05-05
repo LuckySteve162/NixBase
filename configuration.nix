@@ -24,8 +24,12 @@
       interface = "enp5s0";
     };
     firewall = {
-      allowedTCPPorts = [ 47984 47989 48010 ];
-      allowedUDPPorts = [ 47998 47999 48000 48010 ];
+      allowedTCPPorts = [ 
+        47984 47989 47990 # For Sunshine RDP
+        ];
+      allowedUDPPorts = [ 
+        47998 47999 48000 # For Sunshine RDP
+        ];
     };
     # DNS Management
     nameservers = [ "1.1.1.1" ];
