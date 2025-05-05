@@ -19,6 +19,7 @@
       prefixLength = 24;
     }];
   };
+  nameservers = [ "1.1.1.1" ];
   defaultGateway = {
     address = "172.16.122.1";
     interface = "enp5s0";
